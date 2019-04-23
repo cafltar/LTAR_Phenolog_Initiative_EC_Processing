@@ -2,21 +2,29 @@
 
 ## Introduction
 
-This repo contains the code used to process the eddy covariance data acquired for hte LTAR-Network synthesis around the PhenoCam and EC data sets for 2017-2018 timeframe. A brief description of each script is below.
+This repo contains the code used to process the eddy covariance data acquired for hte LTAR-Network synthesis around the PhenoCam and EC data sets for 2017-2018 timeframe. A brief description of each script is below. All scripts written in Python V3.
 
 ## Script Summaries
 
-### File Listings
+### JORN_Combine
 
-The data listed here are *not* gap-filled, see the header for gap-filled data below for the location of the gap-filled data.
+This script combines the data from the different NEON datastreams after the required columns have been pulled using the LTAR_NEON_Data_Extraction and NEON_Extra_Data_Pull scripts.
 
-## AmeriFlux Data
+### UCB_Format
 
-Data submitted to AmeriFlux are housed in a separate folder with its own read-me file. Those data follow a different and specific format for their submission to AmierFlux.
+Forms the time information for the UCB site data into a quasi-ISO8601 format for use within Python.
 
-## Raw Data Locations
+### Reddy_Format
 
-The raw data are housed in the Google Drive and are managed by the data manager.
+Function to format data to match with the input format needed for REddyProc R code.
+
+### NEON_Extra_Data_Pull
+
+Script to concat data from multiple sets of NEON *.csv files and truncate columns to specified headers; precursor to JORN_Combine.
+
+### LTAR_NEON_Data_Extraction
+
+Script to extra specific data from the *.h5 flux data files downloaded from the NEON Data Portal.
 
 ## Contacts
 
