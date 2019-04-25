@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repo contains the code used to process the eddy covariance data acquired for hte LTAR-Network synthesis around the PhenoCam and EC data sets for 2017-2018 timeframe. A brief description of each script is below. All scripts written in Python V3.
+This repo contains the code used to process the eddy covariance data acquired for hte LTAR-Network synthesis around the PhenoCam and EC data sets for 2017-2018 timeframe. A brief description of each script is below. All scripts written in Python V3. This READ_ME is still a work in progress and will be updated over time.
 
 ## Script Summaries
 
@@ -28,4 +28,4 @@ Script to extra specific data from the *.h5 flux data files downloaded from the 
 
 ## Contacts
 
-Eric Russell: erc.s.russll@wsu.edu
+Eric Russell: eric.s.russell@wsu.edu
