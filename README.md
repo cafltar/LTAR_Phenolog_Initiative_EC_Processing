@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repo contains the code used to process the eddy covariance data acquired for hte LTAR-Network synthesis around the PhenoCam and EC data sets for 2017-2018 timeframe. A brief description of each script is below. All scripts written in Python V3. This READ_ME is still a work in progress and will be updated over time.
+This repo contains the code used to process the eddy covariance data acquired for the LTAR-Network synthesis around the PhenoCam and EC data sets for 2017-2018 timeframe. A brief description of each script is below. All scripts written in Python V3. This READ_ME is still a work in progress and will be updated over time.
 
 ## Script Summaries
 
@@ -25,6 +25,12 @@ Script to concat data from multiple sets of NEON *.csv files and truncate column
 ### LTAR_NEON_Data_Extraction
 
 Script to extra specific data from the *.h5 flux data files downloaded from the NEON Data Portal.
+
+### LTAR_Pheno_QC_Functions
+
+### LTAR_Phenology_Final_Processing
+
+### LTAR_Phenology_Initiative_QC_REddy
 
 ## Contacts
 
