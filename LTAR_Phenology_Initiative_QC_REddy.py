@@ -8,6 +8,7 @@ Dept. of Civil and Environmental Engineering
 Washington State University
 eric.s.russell@wsu.edu
 """
+import re
 import pandas as pd
 import glob
 import os
@@ -18,7 +19,8 @@ import warnings
 os.chdir(r'C:\Users\Eric\Documents\GitHub\LTAR_Phenology_Data_Processing')       
 import LTAR_Pheno_QC_Functions as LLT
 import Reddy_Format as REF
-
+ds = '2018-01-01'
+de = '2019-01-01'
 
 files = glob.glob('C:\\Users\\Eric\\Desktop\\LTAR\\LTAR_National_Projects\\PhenologyInitiative\\EC Data\\Processed\\Unprocessed\\*.csv') #Directory or file name with file names here
 # File with upper and lower limits for the flux values for each site based on visual inspection of each dataset
@@ -27,7 +29,8 @@ for K in range (0,len(files)):
 #Read in data and concat to one dataframe; no processing until data all read in - assumes data is from AmeriFlux or in the format that was defined by the group for data requests
     df = pd.read_csv(files[K],header= 0,sep=',',low_memory=False)
     dt = []
-    nme = files[K][100:-4] # These values change with filepath; still need to de-hardcode this value
+    nme = files[K][100:-21]+ds+'_'+de # These values change with filepath; still need to de-hardcode this value
+    nme = re.sub(r'\W+', '', nme) #Remove the dashes from the date start and end points
     Site = ''.join(filter(str.isalpha, files[K][108:111])) # These values change with filepath; still need to de-hardcode this value; grabs the 3-letter site abbreviation I use to ID site sets; work from end of datafile
     if '/' in str(df['TIMESTAMP_START'][0]):
         df.index = pd.to_datetime(df['TIMESTAMP_START'])
@@ -41,10 +44,10 @@ for K in range (0,len(files)):
             dt.append(Y+'-'+M+'-'+D+' '+hh+':'+mm)
         dt = pd.DataFrame(dt);df.index = dt[0]
         df.index=pd.to_datetime(df.index) # Time-based index        
-        df=df.drop(columns = 'TimeStamp')
+        if 'TimeStamp' in df.columns: df=df.drop(columns = 'TimeStamp') # Specific to JORN
         df = df.astype(float)
     df = LLT.indx_fill(df,'30min') # Fill in and missing half-hours in the dataset to have a continuous data set from start time to end.
-    df = df['2018-01-01':'2019-01-01'] # Limit data to set timeframe
+    df = df[ds:de] # Limit data to set timeframe based on defined bounds above
     #%%
 #    Site = 'JOR' # If need to define specific site
     data_qc, data_flags = LLT.Grade_cs(df, QC, Site, site=True) #QC flux data
