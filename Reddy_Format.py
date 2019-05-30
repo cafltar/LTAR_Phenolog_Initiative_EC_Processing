@@ -46,4 +46,4 @@ def REddy_Format(CE, FileName, col_str):
         qq = np.isnan(Outa[cols['ReddyProc'][k]].astype(float))
         del qq
     #Output formatted data to FileName; path in the input driver file. Replace nans to int -9999 within the output call.
-    Outa.to_csv(FileName, sep = '\t', index=False ,na_rep = -9999)
+    Outa.to_csv(FileName, sep = '\t', index=False, na_rep = -9999)
