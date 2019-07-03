@@ -24,7 +24,18 @@ def JulianDate_to_MMDDYYY(y,jd):
         month = month + 1
     return month,jd,y
 #Read in data; UCB data was from the AmeriFlux output option from EddyPro and is inconsistent with the needed format
-datae = pd.read_csv(r'C:\Users\Eric\Desktop\LTAR\LTAR_National_Projects\PhenologyInitiative\EC Data\Processed\Unprocessed\EC_LTAR_UCB_hawbeckereddy_201700101_20171231_redone.csv',header=0, skiprows = [1])
+datae = pd.read_csv(r'C:\Users\Eric\Desktop\LTAR\LTAR_National_Projects\PhenologyInitiative\EC Data\Processed\Unprocessed\EC_LTAR_UCB_hawbeckereddy_201800101_20180824.csv',header=0, skiprows = [1])
+for k in range (0,len(datae)):
+    st = str(datae['HRMIN'][k])
+    if len(st) == 1:
+        st = '00:00'
+    elif len(st) == 2:
+        st = '00:30'
+    elif len(st) == 3:
+        st = '0'+st[0]+':'+st[1:3]
+    elif len(st) == 4:
+        st = st[0:2]+':'+st[2:4]
+    datae['HRMIN'][k] = st
 Y = datae['YEAR'];D = datae['DOY'];H = datae['HRMIN']
 #Conversion of time into more usable format from Doy and decimal formats
 idx = []
@@ -47,4 +58,4 @@ cols.insert(0,cols.pop(cols.index('TIMESTAMP_START')))
 cols.insert(1,cols.pop(cols.index('TIMESTAMP_END')))
 datae = datae.reindex(columns = cols)   
 #Output data following naming convention
-datae.to_csv(r'C:\Users\Eric\Desktop\LTAR\LTAR_National_Projects\PhenologyInitiative\EC Data\Processed\Unprocessed\EC_LTAR_UCB_hawbeckereddy_201700101_20171231_redoneTime.csv', index = False)
+datae.to_csv(r'C:\Users\Eric\Desktop\LTAR\LTAR_National_Projects\PhenologyInitiative\EC Data\Processed\Unprocessed\EC_LTAR_UCB_hawbeckereddy_20180101_20180824_redoneTime.csv', index = False)
