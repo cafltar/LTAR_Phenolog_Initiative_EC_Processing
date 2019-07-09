@@ -27,12 +27,13 @@ import h5py
 import glob
 
 #Read-in data column names needed from the HDF5 file from separate 
-Cols = pd.read_csv('C:\\Users\\Eric\\Desktop\\LTAR\\LTAR_National_Projects\\PhenologyInitiative\\NEON_Data_IDs.csv',header=0)
+Cols = pd.read_csv('C:\\Users\\Eric\\Desktop\\LTAR\\LTAR_National_Projects\\PhenologyInitiative\\NEON_Data_IDs_CLBJ.csv',header=0)
 #Collect all the *.h5 files within the directory listed; can add an extra line to get only specific files based on files names if needed.
-fnames =glob.glob('C:\\Users\\Eric\\Desktop\\LTAR\\LTAR_National_Projects\\PhenologyInitiative\\Jornada\\NEON\\H5 Files\\*.h5')
+fnames =glob.glob('C:\\Users\\Eric\\Desktop\\LTAR\\LTAR_National_Projects\\PhenologyInitiative\\LBJ\\*.h5')
 #Initialize blank dataframes prior to drawing in the 
 Final = []; Final = pd.DataFrame(Final, columns=[Cols['Var_Name']])
 Final_m = []; Final_m = pd.DataFrame(Final)
+#%%
 #Loop to read in the *h5 files grabbed in the glob.glob statement and over the different columns to be extracted
 for K in range(0,len(fnames)):
     f = h5py.File(fnames[K], 'r')
@@ -49,4 +50,4 @@ for K in range(0,len(fnames)):
     Final = pd.concat([Final,Final_m])
     Final_m = []; Final_m = pd.DataFrame(Final_m, columns=[Cols['Var_Name']])
 # Output data
-Final.to_csv(r'C:\Users\Eric\Desktop\Test_NEON.csv')
+Final.to_csv(r'C:\Users\Eric\Desktop\CLBJ_Neon_EC_Data.csv')
