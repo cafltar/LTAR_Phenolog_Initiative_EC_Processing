@@ -64,7 +64,8 @@ for K in range(0, len(files)):
     L_v = (2501000 - 2370*(data_out['Tair_Gapfilled_L3']))   
     Con = (1/L_v)*(30*60)
     data_out['ET_Gapfilled_L3'] = data_out['LE_Gapfilled_L3']*Con
-    data_out['ET_Gapfilled_SD'] = data_out['LE_Gapfilled_SD']*Con
+    if 'LE_Gapfilled_SD' in data_out.columns:
+        data_out['ET_Gapfilled_SD'] = data_out['LE_Gapfilled_SD']*Con
     # Set final 30-minute output variable name
     Data_30 = data_out
     # Resample sum, mean, min, and max for entire dataset 
