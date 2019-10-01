@@ -46,6 +46,7 @@ for K in range (0,len(files)):
         dt = pd.DataFrame(dt);df.index = dt[0]
         df.index=pd.to_datetime(df.index) # Time-based index
         if 'TimeStamp' in df.columns: df=df.drop(columns = 'TimeStamp') # Specific to JORN
+        if 'timestamp' in df.columns: df=df.drop(columns = 'timestamp') # Specific to JORN
         if 'TIMESTAMP' in df.columns: df=df.drop(columns = 'TIMESTAMP') # Specific to JORN
         if 'HRMIN' in df.columns: df=df.drop(columns = 'HRMIN') # Specific to UCB because formating time is bad
         df = df.astype(float)
