@@ -28,8 +28,8 @@ Path = 'C:\\Users\\Eric\\Desktop\\LTAR\\LTAR_National_Projects\\PhenologyInitiat
 files = glob.glob('C:\\Users\\Eric\\Desktop\\LTAR\\LTAR_National_Projects\\REDDY\\Gap-Filled\\*.csv')
 for K in range(0, len(files)):
     #Define output filenames based on path names; needs to be coded better since hardcoded to this file-structure
-    OutName_Daily = Path+files[K][67:-4]+'_Summary_Prelim_Daily.csv'
-    OutName_30Mins = Path+files[K][67:-4]+'_Summary_Prelim_30Mins.csv'
+    OutName_Daily =  Path+files[K][66:-4]+'_Summary_Prelim_Daily.csv'
+    OutName_30Mins = Path+files[K][66:-4]+'_Summary_Prelim_30Mins.csv'
     #Readin the file
     datae = pd.read_csv(files[K],header=0)
     #Convert timestamp back to something usable from REddy format.
@@ -47,7 +47,7 @@ for K in range(0, len(files)):
     #Create datetime index for dataset
     datae.index = idx
     datae.index = pd.to_datetime(datae.index)
-    datae = datae['2017-01-01':'2018-01-01']
+    datae = datae['2018-01-01':'2018-12-31']
     # Columns reduction and renaming to more descriptive names
     cols = pd.read_csv('C:\\Users\\Eric\\Desktop\\LTAR\\Updated_Fluxes\\L3_GapFilled\\Rename_Template.csv',header=0)
     cls = datae.columns # Keeping data as an unchanged variable from this point forward
@@ -85,6 +85,6 @@ for K in range(0, len(files)):
     s = cls.isin(cols['Keepers'])
     data_out = Full.drop(Full[cls[~s]],axis = 1)
     # Output 30-minute and daily datasets
-    data_out.to_csv(OutName_Daily)
+#    data_out.to_csv(OutName_Daily)
     Data_30.to_csv(OutName_30Mins)
     print(OutName_Daily)
