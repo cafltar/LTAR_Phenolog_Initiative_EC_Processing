@@ -250,7 +250,7 @@ ax.annotate('More Loss',xy=(1000,1000),xytext=(500,1500), arrowprops=dict(arrows
 plt.tight_layout()
 #plt.savefig('C:\\Users\\Eric\\Desktop\\LTAR\\LTAR_National_Projects\\PhenologyInitiative\\EC Data\\Final_Data\\Figures\\Annual_Reco_GPP_Comparison_PI_2017_2018.png',dpi=600)
 #%%
-colors = {'ABS-UF':'green','CAF':'brown','CMRB':'midnightblue', 'CPER':'black','GACP':'tomato','GB':'magenta','JORN':'teal','KONA':'lime',
+colors = {'ABS-UF':'green','CAF':'brown','CMRB':'midnightblue', 'CPER':'black','GACP':'tomato','GB':'magenta','JORN':'teal','KBS':'purple','KONA':'lime',
           'NP':'orange','PRHPA':'blue','SEG':'yellowgreen','TG':'tan','UCB':'cyan', 'UMRB':'yellow','WGEW':'grey' }
 plt.figure(4, figsize=(11,8))
 
