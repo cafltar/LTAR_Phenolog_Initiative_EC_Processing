@@ -19,7 +19,7 @@ import warnings
 os.chdir(r'C:\Users\Eric\Documents\GitHub\LTAR_Phenolog_Initiative_EC_Processing')       
 import LTAR_Pheno_QC_Functions as LLT
 import Reddy_Format as REF
-ds = '2017-01-01'
+ds = '2018-01-01'
 de = '2019-01-01'
 
 files = glob.glob('C:\\Users\\Eric\\Desktop\\LTAR\\LTAR_National_Projects\\PhenologyInitiative\\EC Data\\Processed\\Unprocessed\\*.csv') #Directory or file name with file names here
@@ -33,7 +33,7 @@ for K in range (0,len(files)):
     nme = files[K][100:-21]+ds+'_'+de # These values change with filepath; still need to de-hardcode this value
     nme = re.sub(r'\W+', '', nme) #Remove the dashes from the date start and end points
     Site = ''.join(filter(str.isalpha, files[K][108:111])) # These values change with filepath; still need to de-hardcode this value; grabs the 3-letter site abbreviation I use to ID site sets; work from end of datafile
-    if '/' in str(df['TIMESTAMP_START'][0]):
+    if ('/' in str(df['TIMESTAMP_START'][0])) | ('-' in str(df['TIMESTAMP_START'][0])):
         df.index = pd.to_datetime(df['TIMESTAMP_START'])
     else: # Convert timestamp to time-index for easier use
         for k in range (0,len(df)):
