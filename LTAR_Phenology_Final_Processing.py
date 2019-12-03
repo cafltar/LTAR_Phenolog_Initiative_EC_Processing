@@ -85,6 +85,6 @@ for K in range(0, len(files)):
     s = cls.isin(cols['Keepers'])
     data_out = Full.drop(Full[cls[~s]],axis = 1)
     # Output 30-minute and daily datasets
-#    data_out.to_csv(OutName_Daily)
+    data_out.to_csv(OutName_Daily)
     Data_30.to_csv(OutName_30Mins)
     print(OutName_Daily)
