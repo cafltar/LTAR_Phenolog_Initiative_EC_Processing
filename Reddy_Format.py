@@ -14,7 +14,7 @@ import numpy as np
 from datetime import datetime
 def REddy_Format(CE, FileName, col_str):
     #Column names for Reddy and equivalent in the initial dataset; does need to be changed when used within the broader context; will de-hardcode in future updates
-    cols = pd.read_csv(r'C:\Users\Eric\Desktop\LTAR\LTAR_National_Projects\PhenologyInitiative\Reddy_Cols.csv',header=0)
+    cols = pd.read_csv(r'E:\WorkPC_Desktop\LTAR\LTAR_National_Projects\PhenologyInitiative\Reddy_Cols.csv',header=0)
     z = pd.DataFrame(CE.index)
     z = z[0].astype(str)
     #Empty variables for the time converts
